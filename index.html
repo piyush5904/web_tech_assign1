@@ -4,28 +4,37 @@
 <meta charset="UTF-8">
 <title>Student Command Center</title>
 
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 body{
     margin:0;
     font-family:'Montserrat',sans-serif;
-    background:#0f172a;
-    color:#e5e7eb;
+    background:#ffffff;
+    color:#020617;
 }
-
 header{
-    text-align:center;
-    padding:25px;
-    background:#020617;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:20px 30px;
+    background:#ffffff;
+    border-bottom:2px solid #e5e7eb;
 }
-
+header img{
+    height:70px;
+}
+header .title{
+    flex:1;
+    text-align:center;
+}
 header h1{
     margin:0;
     font-weight:700;
 }
-
+header p{
+    margin:5px 0 0;
+}
 .layout{
     display:grid;
     grid-template-columns:1fr 2fr 1fr;
@@ -33,43 +42,38 @@ header h1{
     width:95%;
     margin:25px auto;
 }
-
 .panel{
-    background:#020617;
+    background:#f8fafc;
     padding:20px;
     border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.08);
 }
-
 .panel h2{
-    color:#38bdf8;
-    margin-bottom:15px;
+    color:#0f172a;
 }
-
 .profile img{
     display:block;
     margin:auto;
     border-radius:50%;
-    border:3px solid #38bdf8;
+    border:3px solid #0f172a;
 }
-
 .center{
     display:flex;
     flex-direction:column;
     gap:20px;
 }
-
 svg text{
-    fill:white;
+    fill:#020617;
     font-size:18px;
 }
-
 canvas{
-    background:#020617;
+    background:#ffffff;
     border-radius:8px;
+    border:1px solid #e5e7eb;
 }
-
 button{
-    background:#38bdf8;
+    background:#0f172a;
+    color:white;
     border:none;
     padding:10px;
     margin:5px 0;
@@ -78,26 +82,23 @@ button{
     cursor:pointer;
     font-weight:600;
 }
-
 button:hover{
-    background:#0ea5e9;
+    background:#020617;
 }
-
 #task{
     background:#22c55e;
+    color:white;
     padding:10px;
     text-align:center;
     border-radius:6px;
     cursor:grab;
 }
-
 #dropzone{
-    border:2px dashed #38bdf8;
+    border:2px dashed #0f172a;
     padding:20px;
     margin-top:15px;
     min-height:70px;
 }
-
 .bottom{
     width:95%;
     margin:25px auto;
@@ -111,46 +112,45 @@ button:hover{
 <body onload="getLocation()">
 
 <header>
-    <h1>Student Command Center</h1>
-    <p>Interactive Learning Hub</p>
+    <img src="vitap-logo.png">
+    <div class="title">
+        <h1>Student Command Center</h1>
+        <p>HTML5 Interactive Learning Hub</p>
+    </div>
 </header>
 
 <div class="layout">
 
-  
     <div class="panel profile">
         <h2>Student Profile</h2>
-        <img src="WhatsApp Image 2025-07-16 at 13.41.43_c0d4ad7c.jpg" height="160" alt="Profile">
+        <img src="WhatsApp Image 2025-07-16 at 13.41.43_c0d4ad7c.jpg" height="160">
         <p><b>Name:</b> Piyush Puru</p>
-        <p><b>Branch:</b> CSE CORE</p>
+        <p><b>Branch:</b> CSE</p>
         <p><b>University:</b> VIT-AP</p>
     </div>
 
     <div class="center">
 
-        <!-- SVG -->
         <div class="panel">
             <h2>Course Completion</h2>
             <svg width="140" height="140">
-                <circle cx="70" cy="70" r="60" fill="#1e293b"/>
+                <circle cx="70" cy="70" r="60" fill="#e5e7eb"/>
                 <circle cx="70" cy="70" r="60" fill="none"
-                        stroke="#38bdf8"
+                        stroke="#0f172a"
                         stroke-width="10"
                         stroke-dasharray="377"
-                        stroke-dashoffset="95"/>
-                <text x="48" y="78">10%</text>
+                        stroke-dashoffset="339"/>
+                <text x="52" y="78">10%</text>
             </svg>
         </div>
 
-        
         <div class="panel">
             <h2>Performance Graph</h2>
-            <canvas id="chart" width="420" height="160"></canvas>
+            <canvas id="chart" width="420" height="200"></canvas>
         </div>
 
     </div>
 
-    
     <div class="panel">
         <h2>Student Utilities</h2>
         <button onclick="saveData()">Save Name</button>
@@ -159,7 +159,7 @@ button:hover{
         <p id="location"></p>
         <p id="workerResult"></p>
 
-        <h2 style="margin-top:25px;">Task Control</h2>
+        <h2>Task Control</h2>
         <div id="task" draggable="true" ondragstart="drag(event)">
             Complete HTML5 Lab
         </div>
@@ -170,74 +170,85 @@ button:hover{
 
 </div>
 
-
 <div class="bottom">
 
-    <!-- AUDIO & VIDEO -->
     <div class="panel">
-        <h2>Audio & Video Resources</h2>
+        <h2>Audio & Video Section</h2>
         <audio controls>
-            <source src="sample.mp3" type="audio/mpeg">
+            <source src="sample_960x400_ocean_with_audio.mp3" type="audio/mpeg">
         </audio>
         <br><br>
         <video width="320" controls>
-            <source src="sample.mp4" type="video/mp4">
+            <source src="file_example_MP4_480_1_5MG.mp4" type="video/mp4">
         </video>
     </div>
 
-   
     <div class="panel">
-        <h2>HTML Topics Used Below</h2>
+        <h2>HTML5 Features Used</h2>
         <ul>
-            <li>SVG & Canvas Graphics</li>
+            <li>SVG</li>
+            <li>Canvas</li>
             <li>Web Storage</li>
-            <li>Geolocation API</li>
-            <li>Drag & Drop</li>
+            <li>Geolocation</li>
+            <li>Drag and Drop</li>
             <li>Web Workers</li>
-            <li>Audio & Video</li>
+            <li>Audio and Video</li>
         </ul>
     </div>
 
 </div>
 
 <script>
+const c=document.getElementById("chart");
+const ctx=c.getContext("2d");
 
-const c = document.getElementById("chart");
-const ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.moveTo(20,130);
-ctx.lineTo(140,60);
-ctx.lineTo(260,90);
-ctx.lineTo(380,40);
-ctx.strokeStyle="#38bdf8";
+ctx.strokeStyle="#e5e7eb";
+ctx.lineWidth=1;
+for(let i=20;i<=180;i+=40){
+    ctx.beginPath();
+    ctx.moveTo(40,i);
+    ctx.lineTo(400,i);
+    ctx.stroke();
+}
+
+ctx.strokeStyle="#0f172a";
 ctx.lineWidth=3;
+ctx.beginPath();
+ctx.moveTo(40,160);
+ctx.lineTo(120,140);
+ctx.lineTo(200,110);
+ctx.lineTo(280,130);
+ctx.lineTo(360,90);
 ctx.stroke();
 
+ctx.fillStyle="#0f172a";
+[160,140,110,130,90].forEach((y,i)=>{
+    ctx.beginPath();
+    ctx.arc(40+80*i,y,4,0,Math.PI*2);
+    ctx.fill();
+});
 
 function saveData(){
     localStorage.setItem("student","Piyush Puru");
-    document.getElementById("storage").innerHTML =
-        "Stored: " + localStorage.getItem("student");
+    document.getElementById("storage").innerHTML=
+        "Stored: "+localStorage.getItem("student");
 }
-
 
 function getLocation(){
     if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(pos=>{
-            document.getElementById("location").innerHTML =
-                "Lat: "+pos.coords.latitude+"<br>Lon: "+pos.coords.longitude;
+        navigator.geolocation.getCurrentPosition(p=>{
+            document.getElementById("location").innerHTML=
+                "Lat: "+p.coords.latitude+"<br>Lon: "+p.coords.longitude;
         });
     }
 }
 
-
-function allowDrop(e){ e.preventDefault(); }
-function drag(e){ e.dataTransfer.setData("text",e.target.id); }
+function allowDrop(e){e.preventDefault();}
+function drag(e){e.dataTransfer.setData("text",e.target.id);}
 function drop(e){
     e.preventDefault();
     e.target.appendChild(document.getElementById("task"));
 }
-
 
 let w;
 function startWorker(){
