@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Student Dashboard</title>
+
+    <!-- Working with Fonts -->
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f1f3f6;
+}
+
+.top {
+    background-color: #1e272e;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.grid {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+.card img {
+    display: block;
+    margin: 10px auto;
+    /* border-radius: 50%; */
+}
+
+.wide {
+    width: 90%;
+    margin: 20px auto;
+}
+
+#task {
+    background: #74b9ff;
+    padding: 10px;
+    width: 120px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+#completed {
+    margin-top: 15px;
+    padding: 20px;
+    border: 2px dashed #2d3436;
+}
+
+    </style>
+</head>
+
+<body onload="getLocation()">
+
+<header class="top">
+    <h1>Student Dashboard</h1>
+    <p>Academic Overview & Tools</p>
+</header>
+
+<div class="grid">
+
+    <div class="card">
+        <h2>Profile</h2>
+        <img src="WhatsApp Image 2026-01-07 at 23.23.12.jpeg" height="200px" alt="Profile">
+        <p><b>Name:</b> Smaran</p>
+        <p><b>Program:</b> CSE</p>
+    </div>
+
+    <div class="card">
+        <h2>Course Progress</h2>
+        <svg width="120" height="120">
+            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
+            <circle cx="60" cy="60" r="50" fill="none"
+                    stroke="#0984e3" stroke-width="10"
+                    stroke-dasharray="220" stroke-dashoffset="60"/>
+            <text x="35" y="65">75%</text>
+        </svg>
+        <svg width="120" height="120">
+            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
+            <circle cx="60" cy="60" r="50" fill="none"
+                    stroke="#0984e3" stroke-width="10"
+                    stroke-dasharray="220" stroke-dashoffset="60"/>
+            <text x="35" y="65">75%</text>
+        </svg>
+        <svg width="120" height="120">
+            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
+            <circle cx="60" cy="60" r="50" fill="none"
+                    stroke="#0984e3" stroke-width="10"
+                    stroke-dasharray="220" stroke-dashoffset="60"/>
+            <text x="35" y="65">75%</text>
+        </svg>
+        <svg width="120" height="120">
+            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
+            <circle cx="60" cy="60" r="50" fill="none"
+                    stroke="#0984e3" stroke-width="10"
+                    stroke-dasharray="220" stroke-dashoffset="60"/>
+            <text x="35" y="65">75%</text>
+        </svg>
+    </div>
+
+</div>
+
+<div class="card wide">
+    <h2>Performance Overview</h2>
+    <canvas id="myCanvas" width="400" height="120"></canvas>
+</div>
+
+<div class="card wide">
+    <h2>Learning Resources</h2>
+    <audio controls>
+        <source src="airtel_originally.mp3" type="audio/mpeg">
+    </audio>
+    <br><br>
+    <video width="280" controls>
+        <source src="/" type="video/mp4">
+    </video>
+
+</div>
+
+<div class="card wide">
+    <h2>Task Manager</h2>
+    <div id="task" draggable="true" ondragstart="drag(event)">Assignment</div>
+    <div id="completed" ondragover="allowDrop(event)" ondrop="drop(event)">
+        Drop Here
+    </div>
+</div>
+
+<div class="card wide">
+    <h2>Student Utilities</h2>
+    <button onclick="storeName()">Save Name</button>
+    <button onclick="startWorker()">Start Background Task</button>
+    <p id="storage"></p>
+    <p id="location"></p>
+    <p id="workerResult"></p>
+</div>
+
+<script>
+    function showMessage() {
+        alert("Welcome to the Smart Student Dashboard!");
+    }
+
+    // Canvas
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.moveTo(10,100);
+    ctx.lineTo(240,20);
+    ctx.stroke();
+
+    // Web Storage
+    function storeName() {
+        localStorage.setItem("studentName", "Smaran");
+        document.getElementById("storage").innerHTML =
+            "Stored Name: " + localStorage.getItem("studentName");
+    }
+
+    // Geolocation
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+    }
+
+    function showPosition(position) {
+        document.getElementById("location").innerHTML =
+            "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+
+    // Drag & Drop
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+    // Web Worker
+    var w;
+    function startWorker() {
+        if (typeof(Worker) !== "undefined") {
+            if (typeof(w) == "undefined") {
+                w = new Worker("worker.js");
+            }
+            w.onmessage = function(event) {
+                document.getElementById("workerResult").innerHTML =
+                    event.data;
+            };
+        }
+    }
+</script>
+
+</body>
+</html>
