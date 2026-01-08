@@ -1,211 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Smart Student Dashboard</title>
+<meta charset="UTF-8">
+<title>Student Command Center</title>
 
-    <!-- Working with Fonts -->
-    <style>
-        body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f1f3f6;
+<!-- Working with Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Montserrat',sans-serif;
+    background:#0f172a;
+    color:#e5e7eb;
 }
 
-.top {
-    background-color: #1e272e;
-    color: white;
-    padding: 25px;
-    text-align: center;
+header{
+    text-align:center;
+    padding:25px;
+    background:#020617;
 }
 
-.grid {
-    display: flex;
-    gap: 20px;
-    width: 90%;
-    margin: 30px auto;
+header h1{
+    margin:0;
+    font-weight:700;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    flex: 1;
+.layout{
+    display:grid;
+    grid-template-columns:1fr 2fr 1fr;
+    gap:20px;
+    width:95%;
+    margin:25px auto;
 }
 
-.card img {
-    display: block;
-    margin: 10px auto;
-    /* border-radius: 50%; */
+.panel{
+    background:#020617;
+    padding:20px;
+    border-radius:12px;
 }
 
-.wide {
-    width: 90%;
-    margin: 20px auto;
+.panel h2{
+    color:#38bdf8;
+    margin-bottom:15px;
 }
 
-#task {
-    background: #74b9ff;
-    padding: 10px;
-    width: 120px;
-    text-align: center;
-    border-radius: 4px;
+.profile img{
+    display:block;
+    margin:auto;
+    border-radius:50%;
+    border:3px solid #38bdf8;
 }
 
-#completed {
-    margin-top: 15px;
-    padding: 20px;
-    border: 2px dashed #2d3436;
+.center{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
-    </style>
+svg text{
+    fill:white;
+    font-size:18px;
+}
+
+canvas{
+    background:#020617;
+    border-radius:8px;
+}
+
+button{
+    background:#38bdf8;
+    border:none;
+    padding:10px;
+    margin:5px 0;
+    width:100%;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+button:hover{
+    background:#0ea5e9;
+}
+
+#task{
+    background:#22c55e;
+    padding:10px;
+    text-align:center;
+    border-radius:6px;
+    cursor:grab;
+}
+
+#dropzone{
+    border:2px dashed #38bdf8;
+    padding:20px;
+    margin-top:15px;
+    min-height:70px;
+}
+
+.bottom{
+    width:95%;
+    margin:25px auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+</style>
 </head>
 
 <body onload="getLocation()">
 
-<header class="top">
-    <h1>Student Dashboard</h1>
-    <p>Academic Overview & Tools</p>
+<header>
+    <h1>Student Command Center</h1>
+    <p>HTML5 Interactive Learning Hub</p>
 </header>
 
-<div class="grid">
+<div class="layout">
 
-    <div class="card">
-        <h2>Profile</h2>
-        <img src="WhatsApp Image 2026-01-07 at 23.23.12.jpeg" height="200px" alt="Profile">
-        <p><b>Name:</b> Smaran</p>
-        <p><b>Program:</b> CSE</p>
+    <!-- LEFT PANEL -->
+    <div class="panel profile">
+        <h2>Student Profile</h2>
+        <img src="profile.jpg" height="160" alt="Profile">
+        <p><b>Name:</b> Piyush Puru</p>
+        <p><b>Branch:</b> CSE</p>
+        <p><b>University:</b> VIT-AP</p>
     </div>
 
-    <div class="card">
-        <h2>Course Progress</h2>
-        <svg width="120" height="120">
-            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
-            <circle cx="60" cy="60" r="50" fill="none"
-                    stroke="#0984e3" stroke-width="10"
-                    stroke-dasharray="220" stroke-dashoffset="60"/>
-            <text x="35" y="65">75%</text>
-        </svg>
-        <svg width="120" height="120">
-            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
-            <circle cx="60" cy="60" r="50" fill="none"
-                    stroke="#0984e3" stroke-width="10"
-                    stroke-dasharray="220" stroke-dashoffset="60"/>
-            <text x="35" y="65">75%</text>
-        </svg>
-        <svg width="120" height="120">
-            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
-            <circle cx="60" cy="60" r="50" fill="none"
-                    stroke="#0984e3" stroke-width="10"
-                    stroke-dasharray="220" stroke-dashoffset="60"/>
-            <text x="35" y="65">75%</text>
-        </svg>
-        <svg width="120" height="120">
-            <circle cx="60" cy="60" r="50" fill="#dfe6e9"/>
-            <circle cx="60" cy="60" r="50" fill="none"
-                    stroke="#0984e3" stroke-width="10"
-                    stroke-dasharray="220" stroke-dashoffset="60"/>
-            <text x="35" y="65">75%</text>
-        </svg>
+    <!-- CENTER PANEL -->
+    <div class="center">
+
+        <!-- SVG -->
+        <div class="panel">
+            <h2>Course Completion (SVG)</h2>
+            <svg width="140" height="140">
+                <circle cx="70" cy="70" r="60" fill="#1e293b"/>
+                <circle cx="70" cy="70" r="60" fill="none"
+                        stroke="#38bdf8"
+                        stroke-width="10"
+                        stroke-dasharray="377"
+                        stroke-dashoffset="95"/>
+                <text x="48" y="78">75%</text>
+            </svg>
+        </div>
+
+        <!-- CANVAS -->
+        <div class="panel">
+            <h2>Performance Graph (Canvas)</h2>
+            <canvas id="chart" width="420" height="160"></canvas>
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="panel">
+        <h2>Student Utilities</h2>
+        <button onclick="saveData()">Save Name</button>
+        <button onclick="startWorker()">Run Worker</button>
+        <p id="storage"></p>
+        <p id="location"></p>
+        <p id="workerResult"></p>
+
+        <h2 style="margin-top:25px;">Task Control</h2>
+        <div id="task" draggable="true" ondragstart="drag(event)">
+            Complete HTML5 Lab
+        </div>
+        <div id="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)">
+            Drop Task Here
+        </div>
     </div>
 
 </div>
 
-<div class="card wide">
-    <h2>Performance Overview</h2>
-    <canvas id="myCanvas" width="400" height="120"></canvas>
-</div>
+<!-- BOTTOM PANEL -->
+<div class="bottom">
 
-<div class="card wide">
-    <h2>Learning Resources</h2>
-    <audio controls>
-        <source src="airtel_originally.mp3" type="audio/mpeg">
-    </audio>
-    <br><br>
-    <video width="280" controls>
-        <source src="/" type="video/mp4">
-    </video>
-
-</div>
-
-<div class="card wide">
-    <h2>Task Manager</h2>
-    <div id="task" draggable="true" ondragstart="drag(event)">Assignment</div>
-    <div id="completed" ondragover="allowDrop(event)" ondrop="drop(event)">
-        Drop Here
+    <!-- AUDIO & VIDEO -->
+    <div class="panel">
+        <h2>Audio & Video Resources</h2>
+        <audio controls>
+            <source src="sample.mp3" type="audio/mpeg">
+        </audio>
+        <br><br>
+        <video width="320" controls>
+            <source src="sample.mp4" type="video/mp4">
+        </video>
     </div>
-</div>
 
-<div class="card wide">
-    <h2>Student Utilities</h2>
-    <button onclick="storeName()">Save Name</button>
-    <button onclick="startWorker()">Start Background Task</button>
-    <p id="storage"></p>
-    <p id="location"></p>
-    <p id="workerResult"></p>
+    <!-- INFO -->
+    <div class="panel">
+        <h2>HTML5 Capabilities Used</h2>
+        <ul>
+            <li>SVG & Canvas Graphics</li>
+            <li>Web Storage</li>
+            <li>Geolocation API</li>
+            <li>Drag & Drop</li>
+            <li>Web Workers</li>
+            <li>Audio & Video</li>
+        </ul>
+    </div>
+
 </div>
 
 <script>
-    function showMessage() {
-        alert("Welcome to the Smart Student Dashboard!");
-    }
+// Canvas
+const c = document.getElementById("chart");
+const ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.moveTo(20,130);
+ctx.lineTo(140,60);
+ctx.lineTo(260,90);
+ctx.lineTo(380,40);
+ctx.strokeStyle="#38bdf8";
+ctx.lineWidth=3;
+ctx.stroke();
 
-    // Canvas
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.moveTo(10,100);
-    ctx.lineTo(240,20);
-    ctx.stroke();
+// Web Storage
+function saveData(){
+    localStorage.setItem("student","Piyush Puru");
+    document.getElementById("storage").innerHTML =
+        "Stored: " + localStorage.getItem("student");
+}
 
-    // Web Storage
-    function storeName() {
-        localStorage.setItem("studentName", "Smaran");
-        document.getElementById("storage").innerHTML =
-            "Stored Name: " + localStorage.getItem("studentName");
+// Geolocation
+function getLocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(pos=>{
+            document.getElementById("location").innerHTML =
+                "Lat: "+pos.coords.latitude+"<br>Lon: "+pos.coords.longitude;
+        });
     }
+}
 
-    // Geolocation
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        }
-    }
+// Drag & Drop
+function allowDrop(e){ e.preventDefault(); }
+function drag(e){ e.dataTransfer.setData("text",e.target.id); }
+function drop(e){
+    e.preventDefault();
+    e.target.appendChild(document.getElementById("task"));
+}
 
-    function showPosition(position) {
-        document.getElementById("location").innerHTML =
-            "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
+// Web Worker
+let w;
+function startWorker(){
+    if(typeof(Worker)!=="undefined"){
+        if(!w) w=new Worker("worker.js");
+        w.onmessage=e=>{
+            document.getElementById("workerResult").innerHTML=e.data;
+        };
     }
-
-    // Drag & Drop
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
-
-    function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-    }
-
-    // Web Worker
-    var w;
-    function startWorker() {
-        if (typeof(Worker) !== "undefined") {
-            if (typeof(w) == "undefined") {
-                w = new Worker("worker.js");
-            }
-            w.onmessage = function(event) {
-                document.getElementById("workerResult").innerHTML =
-                    event.data;
-            };
-        }
-    }
+}
 </script>
 
 </body>
