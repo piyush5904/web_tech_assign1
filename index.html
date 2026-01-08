@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Student Command Center</title>
 
-<!-- Working with Fonts -->
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -112,26 +112,25 @@ button:hover{
 
 <header>
     <h1>Student Command Center</h1>
-    <p>HTML5 Interactive Learning Hub</p>
+    <p>Interactive Learning Hub</p>
 </header>
 
 <div class="layout">
 
-    <!-- LEFT PANEL -->
+  
     <div class="panel profile">
         <h2>Student Profile</h2>
-        <img src="profile.jpg" height="160" alt="Profile">
+        <img src="WhatsApp Image 2025-07-16 at 13.41.43_c0d4ad7c.jpg" height="160" alt="Profile">
         <p><b>Name:</b> Piyush Puru</p>
-        <p><b>Branch:</b> CSE</p>
+        <p><b>Branch:</b> CSE CORE</p>
         <p><b>University:</b> VIT-AP</p>
     </div>
 
-    <!-- CENTER PANEL -->
     <div class="center">
 
         <!-- SVG -->
         <div class="panel">
-            <h2>Course Completion (SVG)</h2>
+            <h2>Course Completion</h2>
             <svg width="140" height="140">
                 <circle cx="70" cy="70" r="60" fill="#1e293b"/>
                 <circle cx="70" cy="70" r="60" fill="none"
@@ -139,19 +138,19 @@ button:hover{
                         stroke-width="10"
                         stroke-dasharray="377"
                         stroke-dashoffset="95"/>
-                <text x="48" y="78">75%</text>
+                <text x="48" y="78">10%</text>
             </svg>
         </div>
 
-        <!-- CANVAS -->
+        
         <div class="panel">
-            <h2>Performance Graph (Canvas)</h2>
+            <h2>Performance Graph</h2>
             <canvas id="chart" width="420" height="160"></canvas>
         </div>
 
     </div>
 
-    <!-- RIGHT PANEL -->
+    
     <div class="panel">
         <h2>Student Utilities</h2>
         <button onclick="saveData()">Save Name</button>
@@ -171,7 +170,7 @@ button:hover{
 
 </div>
 
-<!-- BOTTOM PANEL -->
+
 <div class="bottom">
 
     <!-- AUDIO & VIDEO -->
@@ -186,9 +185,9 @@ button:hover{
         </video>
     </div>
 
-    <!-- INFO -->
+   
     <div class="panel">
-        <h2>HTML5 Capabilities Used</h2>
+        <h2>HTML Topics Used Below</h2>
         <ul>
             <li>SVG & Canvas Graphics</li>
             <li>Web Storage</li>
@@ -202,7 +201,7 @@ button:hover{
 </div>
 
 <script>
-// Canvas
+
 const c = document.getElementById("chart");
 const ctx = c.getContext("2d");
 ctx.beginPath();
@@ -214,14 +213,14 @@ ctx.strokeStyle="#38bdf8";
 ctx.lineWidth=3;
 ctx.stroke();
 
-// Web Storage
+
 function saveData(){
     localStorage.setItem("student","Piyush Puru");
     document.getElementById("storage").innerHTML =
         "Stored: " + localStorage.getItem("student");
 }
 
-// Geolocation
+
 function getLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(pos=>{
@@ -231,7 +230,7 @@ function getLocation(){
     }
 }
 
-// Drag & Drop
+
 function allowDrop(e){ e.preventDefault(); }
 function drag(e){ e.dataTransfer.setData("text",e.target.id); }
 function drop(e){
@@ -239,7 +238,7 @@ function drop(e){
     e.target.appendChild(document.getElementById("task"));
 }
 
-// Web Worker
+
 let w;
 function startWorker(){
     if(typeof(Worker)!=="undefined"){
